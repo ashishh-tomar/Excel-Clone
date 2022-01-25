@@ -51,6 +51,19 @@ body{
     outline: none;
 }
 
+.color-prop{
+    position: relative;
+}
+
+.color-prop > input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
 .formula-action-cont{
     background-color: #ecf0f1;
     height: 2rem;

@@ -38,6 +38,9 @@ for(let i=0;i<row;i++)
         let cell=document.createElement("div");
         cell.setAttribute("class","cell");
         cell.setAttribute("contenteditable","true");
+        cell.setAttribute("rId",i);
+        cell.setAttribute("cId",j);
+        cell.setAttribute("spellcheck","false");
         rowCont.appendChild(cell);
         addListenerToDisplayAddress(cell,i,j);
     }
@@ -57,3 +60,6 @@ function addListenerToDisplayAddress(cell,i,j)
 }
 
 
+//By default click on first cell when browser start 
+let firstCell=document.querySelector(".cell");
+firstCell.click();
