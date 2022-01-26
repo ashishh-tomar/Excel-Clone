@@ -30,11 +30,16 @@ body{
     align-items: center;
     padding-left: 1rem;
     
+    
 }
 
 .cellprops-action-cont > * {
     display: inline-block;
     margin-right: 1rem;
+}
+
+.cellprops-action-cont > *:hover {
+   cursor: pointer;
 }
 
 .fontfamily-prop{
@@ -49,6 +54,7 @@ body{
     border: none;
     border-radius: 2px;
     outline: none;
+    
 }
 
 .color-prop{
