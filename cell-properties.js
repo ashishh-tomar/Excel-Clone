@@ -14,8 +14,10 @@ for(let i=0;i<row;i++)
             fontFamily : "monospace",
             fontSize : "14",
             fontColor : "#000000",
-            bgColor : "#000000" // just for indication purpose or default values right now
-
+            bgColor : "#000000", // just for indication purpose or default values right now
+            value : "",
+            formula : "",
+            children : []
         };
         sheetRow.push(cellProp);
     }
