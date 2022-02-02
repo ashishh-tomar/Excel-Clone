@@ -28,7 +28,6 @@ formulaBar.addEventListener("keydown",(e)=>{
     let inputFormula=formulaBar.value;
     if(e.key === "Enter" && formulaBar.value)
     {
-        let evaluatedVal = evaluateFormula(inputFormula);
        // If change in formula, break ol child-parent relation then evaluate new formula, add new hild parent relation
         let address=addressBar.value;
         let [cell,cellProp] =activeCell(address);
@@ -37,13 +36,27 @@ formulaBar.addEventListener("keydown",(e)=>{
             removeChildFromParent(cellProp.formula);
         }
 
+        addChildToGraphComponent(inputFormula,address);
+       //check formula is cyclic or not then only evaluates
+       // True -> cycle , False-> Not cyclic
+       
+        let isCyclic=isGraphCyclic(graphComponentMatrix);
+        console.log(isCyclic);
+        if(isCyclic == true)
+        {
+            console.log("cylce"+isCyclic);
+            alert("Your formula is cyclic");
+            removeChildFromGraphComponent(inputFormula,address);
+            return;
+        }
+
+        let evaluatedVal = evaluateFormula(inputFormula);        
         //To update UI and Cell Prop in DB
-        
         cellUIandCellProp(evaluatedVal,inputFormula,address);
         addChildToParent(inputFormula);
-
-        updateChildrenCells(address);
-       // console.log(sheetDB);
+         updateChildrenCells(address);
+        //console.log(sheetDB);
+        console.log(graphComponentMatrix);
 
     
     }
@@ -68,6 +81,40 @@ function updateChildrenCells(parentAddress)
 
     }
 }
+
+function addChildToGraphComponent(formula,childAddress)
+{
+    let[crId,ccId]=decodeAddress(childAddress);
+    let encodedFormula=formula.split(" ");
+    for(let i=0;i<encodedFormula.length;i++)
+    {
+        let asciiValue=encodedFormula[i].charCodeAt(0);
+        if(asciiValue >= 65 && asciiValue <=90)
+        {
+            let [prId,pcId]=decodeAddress(encodedFormula[i]);
+            graphComponentMatrix[prId][pcId].push([crId,ccId]);
+        }
+    }
+}
+
+
+function removeChildFromGraphComponent(formula,childAddress)
+{
+    let[childrId,childcId]=decodeAddress(childAddress);
+    let encodedFormula=formula.split(" ");
+    for(let i=0;i<encodedFormula.length;i++)
+    {
+        let asciiValue=encodedFormula[i].charCodeAt(0);
+        if(asciiValue >= 65 && asciiValue <=90)
+        {
+            let [prowId,pcolId]=decodeAddress(encodedFormula[i]);
+            graphComponentMatrix[prowId,pcolId].pop();
+        }
+    }
+}
+
+
+
 function  addChildToParent(formula)
 {
     let childAddress=addressBar.value;
@@ -116,7 +163,7 @@ function evaluateFormula(formula)
         {
             let[cell,cellProp]= activeCell(encodedFormula[i]);
             encodedFormula[i]= cellProp.value;
-            console.log(cellProp.value);
+           // console.log(cellProp.value);
         }
     }
 
