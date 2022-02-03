@@ -1,29 +1,35 @@
 // Storage
+let collectedSheetDB=[]; // contains all sheet Db
 let sheetDB=[];
 
-for(let i=0;i<row;i++)
 {
-    let sheetRow=[];
-    for(let j=0;j<col;j++)
-    {
-        let cellProp={
-            bold : false,
-            italic : false,
-            underline : false,
-            alignment : "left",
-            fontFamily : "monospace",
-            fontSize : "14",
-            fontColor : "#000000",
-            bgColor : "#000000", // just for indication purpose or default values right now
-            value : "",
-            formula : "",
-            children : []
-        };
-        sheetRow.push(cellProp);
-    }
-
-    sheetDB.push(sheetRow);
+    let addSheetBtn=document.querySelector(".sheet-add-icon");
+    addSheetBtn.click();
+    
 }
+// for(let i=0;i<row;i++)
+// {
+//     let sheetRow=[];
+//     for(let j=0;j<col;j++)
+//     {
+//         let cellProp={
+//             bold : false,
+//             italic : false,
+//             underline : false,
+//             alignment : "left",
+//             fontFamily : "monospace",
+//             fontSize : "14",
+//             fontColor : "#000000",
+//             bgColor : "#000000", // just for indication purpose or default values right now
+//             value : "",
+//             formula : "",
+//             children : []
+//         };
+//         sheetRow.push(cellProp);
+//     }
+
+//     sheetDB.push(sheetRow);
+// }
 
 
 //Selector for cell Properties
@@ -214,7 +220,7 @@ function addListenerToAttachCellPro(cell){
 
         let formulaBar= document.querySelector(".formula-bar");
         formulaBar.value=cellProp.formula;
-        cell.value=cellProp.value;
+        cell.innerText=cellProp.value;
         
     })
 }

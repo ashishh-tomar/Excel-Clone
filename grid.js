@@ -60,6 +60,3 @@ function addListenerToDisplayAddress(cell,i,j)
 }
 
 
-//By default click on first cell when browser start 
-let firstCell=document.querySelector(".cell");
-firstCell.click();

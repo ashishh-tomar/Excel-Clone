@@ -1,16 +1,17 @@
 // Storage of 2d array(Basic need)
+let collectedGraphComponent=[];
 let graphComponentMatrix=[];
 
-for(let i=0;i<row;i++)
-{
-    let r=[];
-    for(let j=0;j<col;j++)
-    {
-        //Why Array required => More than child relation(dependency)
-        r.push([]);
-    }
-    graphComponentMatrix.push(r);
-}
+// for(let i=0;i<row;i++)
+// {
+//     let r=[];
+//     for(let j=0;j<col;j++)
+//     {
+//         //Why Array required => More than child relation(dependency)
+//         r.push([]);
+//     }
+//     graphComponentMatrix.push(r);
+// }
 
 
 //return boolean - > true means cyclic else not cyclic

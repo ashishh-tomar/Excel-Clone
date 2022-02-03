@@ -195,20 +195,39 @@ body{
     width: 2vw;
 }
 
+.sheet-add-icon :hover{
+    cursor: pointer;
+}
+
 .sheet-folder-cont{
     height: 80%;
     display: flex;
     align-items: center;
     width: calc(100vw - 2vw );
+    overflow: auto;
 }
 
 .sheet-folder{
+    height: 80%;
     text-decoration: underline;
     font-weight: bold;                                        
     text-decoration-thickness: 3px;     
-    font-size: 0.9rem;                      
+    font-size: 0.9rem; 
+     
+    text-align: center;   
+    display: flex;
+    justify-content: center;
+    align-items: center;                 
 }
 
+.sheet-folder:hover{
+    cursor: pointer;
+}
+
+.sheet-content{
+   width: 5rem; 
+   
+}
 
 
 
