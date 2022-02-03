@@ -44,14 +44,14 @@ function isGraphCyclic(graphComponentMatrix){
                 let ans = dfs(graphComponentMatrix,i,j,visited,dfsVisited);
                 if(ans==true)
                 {
-                    return true;
+                    return [i,j];
                 }
             }
            
         }
     }
 
-    return false;
+    return null;
 }
 
 // first mark visited and dfsVisited True
