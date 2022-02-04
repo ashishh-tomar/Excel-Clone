@@ -19,8 +19,18 @@ body{
 }
 
 .page-action{
-    margin: 0.5rem;
+    width: 4rem;
+    height: 2rem;
+    text-align: center;
     color: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-page-action{
+    background-color: #ecf0f1;
+    color:#1D6F42;
 }
 
 .cellprops-action-cont{

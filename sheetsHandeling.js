@@ -13,6 +13,7 @@ addSheetBtn.addEventListener("click",()=>{
     `;
 
     sheetFolderCont.appendChild(sheet);
+    sheet.scrollIntoView();
 
     //DB
     createSheetDB();
